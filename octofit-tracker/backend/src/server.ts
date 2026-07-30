@@ -4,7 +4,7 @@ import apiRouter from './routes/api.js';
 
 const app = express();
 const PORT = 8000;
-const codespaceName = process.env.CODESPACE_NAME;
+const codespaceName = 'glorious-xylophone-6wrwpvqwxxg2wv5';
 const apiBaseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : `http://localhost:${PORT}`;
