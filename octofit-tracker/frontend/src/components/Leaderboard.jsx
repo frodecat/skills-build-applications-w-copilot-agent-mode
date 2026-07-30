@@ -2,7 +2,7 @@ import { DataState } from './DataState.jsx'
 import { useCollection } from './useCollection.js'
 
 function Leaderboard() {
-  const { items: leaderboard, loading, error } = useCollection('leaderboard')
+  const { items: leaderboard, loading, error } = useCollection('leaderboard', '/api/leaderboard/')
 
   return (
     <section className="content-panel">

@@ -2,7 +2,7 @@ import { DataState } from './DataState.jsx'
 import { useCollection } from './useCollection.js'
 
 function Workouts() {
-  const { items: workouts, loading, error } = useCollection('workouts')
+  const { items: workouts, loading, error } = useCollection('workouts', '/api/workouts/')
 
   return (
     <section className="content-panel">

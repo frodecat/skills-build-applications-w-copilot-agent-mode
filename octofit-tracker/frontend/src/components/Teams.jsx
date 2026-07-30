@@ -2,7 +2,7 @@ import { DataState } from './DataState.jsx'
 import { useCollection } from './useCollection.js'
 
 function Teams() {
-  const { items: teams, loading, error } = useCollection('teams')
+  const { items: teams, loading, error } = useCollection('teams', '/api/teams/')
 
   return (
     <section className="content-panel">

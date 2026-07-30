@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from '../api.js'
 
-export function useCollection(collectionName) {
+export function useCollection(collectionName, endpointPath) {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -11,7 +11,7 @@ export function useCollection(collectionName) {
 
     async function loadItems() {
       try {
-        const nextItems = await fetchCollection(collectionName)
+        const nextItems = await fetchCollection(collectionName, endpointPath)
 
         if (!ignore) {
           setItems(nextItems)
@@ -33,7 +33,7 @@ export function useCollection(collectionName) {
     return () => {
       ignore = true
     }
-  }, [collectionName])
+  }, [collectionName, endpointPath])
 
   return { items, loading, error }
 }
