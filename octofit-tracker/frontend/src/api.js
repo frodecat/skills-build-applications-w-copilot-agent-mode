@@ -5,10 +5,12 @@ export const API_BASE_URL = codespaceName
   : 'http://localhost:8000/api'
 
 export async function fetchCollection(collectionName, endpointPath = `/api/${collectionName}/`) {
-  const endpoint = endpointPath.startsWith('/api/')
-    ? endpointPath.slice('/api/'.length)
-    : endpointPath.replace(/^\/+/, '')
-  const response = await fetch(`${API_BASE_URL}/${endpoint}`)
+  const requestUrl = endpointPath.startsWith('http')
+    ? endpointPath
+    : `${API_BASE_URL}/${endpointPath.startsWith('/api/')
+      ? endpointPath.slice('/api/'.length)
+      : endpointPath.replace(/^\/+/, '')}`
+  const response = await fetch(requestUrl)
 
   if (!response.ok) {
     throw new Error(`Unable to load ${collectionName}`)

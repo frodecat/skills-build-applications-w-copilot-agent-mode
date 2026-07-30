@@ -1,8 +1,12 @@
 import { DataState } from './DataState.jsx'
 import { useCollection } from './useCollection.js'
 
+const teamsEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/`
+  : '/api/teams/'
+
 function Teams() {
-  const { items: teams, loading, error } = useCollection('teams', '/api/teams/')
+  const { items: teams, loading, error } = useCollection('teams', teamsEndpoint)
 
   return (
     <section className="content-panel">

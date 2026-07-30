@@ -1,8 +1,12 @@
 import { DataState } from './DataState.jsx'
 import { useCollection } from './useCollection.js'
 
+const activitiesEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
+  : '/api/activities/'
+
 function Activities() {
-  const { items: activities, loading, error } = useCollection('activities', '/api/activities/')
+  const { items: activities, loading, error } = useCollection('activities', activitiesEndpoint)
 
   return (
     <section className="content-panel">

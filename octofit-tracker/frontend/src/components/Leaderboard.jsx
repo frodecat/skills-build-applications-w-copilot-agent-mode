@@ -1,8 +1,12 @@
 import { DataState } from './DataState.jsx'
 import { useCollection } from './useCollection.js'
 
+const leaderboardEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`
+  : '/api/leaderboard/'
+
 function Leaderboard() {
-  const { items: leaderboard, loading, error } = useCollection('leaderboard', '/api/leaderboard/')
+  const { items: leaderboard, loading, error } = useCollection('leaderboard', leaderboardEndpoint)
 
   return (
     <section className="content-panel">
