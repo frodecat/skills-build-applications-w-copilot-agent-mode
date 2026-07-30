@@ -1,14 +1,13 @@
 import express from 'express';
 import './config/database.js';
+import { API_PORT } from './config/apiUrl.js';
+import apiRouter from './routes/api.js';
 
 const app = express();
-const PORT = Number(process.env.PORT) || 8000;
+const PORT = API_PORT;
 
 app.use(express.json());
-
-app.get('/api/health', (_req, res) => {
-  res.status(200).json({ status: 'ok' });
-});
+app.use('/api', apiRouter);
 
 app.listen(PORT, () => {
   console.log(`Octofit backend listening on port ${PORT}`);
